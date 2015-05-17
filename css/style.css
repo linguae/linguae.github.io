@@ -1,0 +1,44 @@
+@import url(animate.css);
+@import url(bootstrap.css);
+@import url(font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Muli);
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+@import url(metro-bootstrap.min.css);
+.jumbotron
+{
+	height: 100%;
+	background-color: #FFF
+}
+
+.nav
+{
+	padding-top: 5;
+	width: 100%;
+	padding-bottom: 5;
+}
+
+.nav li
+{
+	text-decoration: none;
+	list-style-type: none;
+	display: inline;
+}
+
+.logo
+{
+	font-size: 20px
+}
+
+.notlogo
+{
+	margin-left: 20px
+}
+
+.col-md-3
+{
+	height: 100%;
+	background-image: url(../img/legion.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
