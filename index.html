@@ -26,27 +26,30 @@
         <div class="col-md-3"></div>
         <div class="col-md-9">
           <h1>Linguae</h1>
-          <input id="word" type="text" placeholder="Enter your word"> <button onclick="decline()" class="btn btn-primary">Decline!</button>
-          <h1 id="w"></h1>
-          <h3 id="definition"></h3>
+          <form method="get" id="target">
+            <input name="search" id="word" placeholder="The word of difficulty">
+            <input type="submit" class="btn btn-primary">
+          </form>
+          <h3 id="w"></h3>
+          <h3>Made with <i class="fa fa-heart animated infinite pulse" style="color:red"></i> and <a href="http://github.com/andykamath/linguae">Open-Sourced</a> by <a href="http://andykamath.com">Andy Kamath</a> with the dictionary from <a href="http://www.archives.nd.edu/cgi-bin/words.exe">University of Notre Dame Archives</a></h3>
         </div>
       </div>
     </div>
-
     <script type="text/javascript">
-      Parse.initialize("Y8q72tqg2B7c7rRumPZqDAP5ur0WEoGczbvWX9Vz", "xkHI8ZGkUQpGE6ImEvMS8W7ORhbOAZYbKqJ8IUt1");
-      $("#word").keypress(function(e){
-        if(e.which==13)
-        {
-          decline();
-        }
+      $( "#target" ).submit(function( event ) {
+        alert($("#word").val());
+        event.preventDefault();
+        var word = $("#word").val();
+        $("#w").text("");
+        $.getJSON("nouns.json", function(result){
+          $.each(result, function(i, field){
+            if(word==field.nom || word==field.gen || word==field.dat || word==field.acc || word==field.abl || word==field.voc || word==field.nompl || word==field.genpl || word==field.datpl || word==field.accpl || word==field.ablpl || word==field.vocpl || word==field.nom2 || word==field.gen2 || word==field.dat2 || word==field.acc2 || word==field.abl2 || word==field.voc2 || word==field.nompl2 || word==field.genpl2 || word==field.datpl2 || word==field.accpl2 || word==field.ablpl2 || word==field.vocpl2)
+            {
+              $("#w").append(word+" comes from "+field.nom+", "+field.gen+"-"+field.def.substring(8));
+            }
+          });
+        });
       });
-      function decline()
-      {
-        var x = document.getElementById("word").value;
-
-        $.getJSON("index.json");
-      }
     </script>
   </body>
 </html>
